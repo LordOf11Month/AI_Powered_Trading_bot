@@ -7,9 +7,10 @@ public final class ObserverPattern {
         void addObserver(Observer observer);
         void removeObserver(Observer observer);
         void notifyObservers();
+        Object pullData();
     }
 
     public interface Observer {
-        void update(Subject subject);
+        void update();
     }
 }
