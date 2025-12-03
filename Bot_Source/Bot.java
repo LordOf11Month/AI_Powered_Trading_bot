@@ -31,7 +31,7 @@ public class Bot implements Observer {
        
         TradeIntent tradeIntent = riskManager.filter(positionSizer.sizePosition(signal));
 
-        exchanger.execute(tradeIntent.toOrder());
+        exchanger.execute(tradeIntent);
     }
     
 }

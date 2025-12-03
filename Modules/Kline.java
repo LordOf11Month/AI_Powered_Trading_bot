@@ -39,52 +39,40 @@ import java.util.Date;
  */
 public class Kline {
     private Long startTime;              // t - Kline start time (timestamp in milliseconds)
-    private Long closeTime;              // T - Kline close time (timestamp in milliseconds)
-    private String symbol;               // s - Trading pair symbol (e.g., "BNBBTC")
-    private String interval;             // i - Kline interval (e.g., "1m", "5m", "1h", "1d")
-    private Long firstTradeId;           // f - First trade ID in this kline
-    private Long lastTradeId;            // L - Last trade ID in this kline
+    //private Long closeTime;              // T - Kline close time (timestamp in milliseconds)
+    //private String symbol;               // s - Trading pair symbol (e.g., "BNBBTC")
+    //private String interval;             // i - Kline interval (e.g., "1m", "5m", "1h", "1d")
+    //private Long firstTradeId;           // f - First trade ID in this kline
+    //private Long lastTradeId;            // L - Last trade ID in this kline
     private Double openPrice;            // o - Open price (first trade price in the interval)
     private Double closePrice;           // c - Close price (last trade price in the interval)
     private Double highPrice;            // h - Highest price during the interval
     private Double lowPrice;             // l - Lowest price during the interval
     private Double baseAssetVolume;      // v - Base asset volume (total volume traded)
     private Integer numberOfTrades;      // n - Number of trades during the interval
-    private Boolean isClosed;            // x - Is this kline closed? (true when interval is complete)
+    //private Boolean isClosed;            // x - Is this kline closed? (true when interval is complete)
     private Double quoteAssetVolume;     // q - Quote asset volume
     private Double takerBuyBaseVolume;   // V - Taker buy base asset volume
     private Double takerBuyQuoteVolume;   // Q - Taker buy quote asset volume
     public Kline(
         Long startTime,
-        Long closeTime,
-        String symbol,
-        String interval,
-        Long firstTradeId,
-        Long lastTradeId,
         Double openPrice,
         Double closePrice,
         Double highPrice,
         Double lowPrice,
         Double baseAssetVolume,
         Integer numberOfTrades,
-        Boolean isClosed,
         Double quoteAssetVolume,
         Double takerBuyBaseVolume,
         Double takerBuyQuoteVolume
     ) {
         this.startTime = startTime;
-        this.closeTime = closeTime;
-        this.symbol = symbol;
-        this.interval = interval;
-        this.firstTradeId = firstTradeId;
-        this.lastTradeId = lastTradeId;
         this.openPrice = openPrice;
         this.closePrice = closePrice;
         this.highPrice = highPrice;
         this.lowPrice = lowPrice;
         this.baseAssetVolume = baseAssetVolume;
         this.numberOfTrades = numberOfTrades;
-        this.isClosed = isClosed;
         this.quoteAssetVolume = quoteAssetVolume;
         this.takerBuyBaseVolume = takerBuyBaseVolume;
         this.takerBuyQuoteVolume = takerBuyQuoteVolume;
@@ -97,14 +85,7 @@ public class Kline {
         return new Date(startTime);
     }
     
-    /**
-     * Get the kline close time as a Date object
-     * @return Date representing the close time
-     */
-    public Date getCloseDate() {
-        return new Date(closeTime);
-    }
-    
+ 
     /**
      * Calculate the price change during this kline
      * @return Price change (closePrice - openPrice)
@@ -219,13 +200,5 @@ public class Kline {
      */
     public Double getSellPressure() {
         return 1.0 - getBuyPressure();
-    }
-    
-    /**
-     * Get duration in milliseconds
-     * @return Duration of this kline interval
-     */
-    public Long getDuration() {
-        return closeTime - startTime;
     }
 }
