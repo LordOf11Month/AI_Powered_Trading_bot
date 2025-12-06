@@ -201,4 +201,41 @@ public class Kline {
     public Double getSellPressure() {
         return 1.0 - getBuyPressure();
     }
+
+    // Getter methods for OHLC and volume data
+    public Double getOpenPrice() {
+        return openPrice;
+    }
+
+    public Double getClosePrice() {
+        return closePrice;
+    }
+
+    public Double getHighPrice() {
+        return highPrice;
+    }
+
+    public Double getLowPrice() {
+        return lowPrice;
+    }
+
+    public Double getBaseAssetVolume() {
+        return baseAssetVolume;
+    }
+
+    public Integer getNumberOfTrades() {
+        return numberOfTrades;
+    }
+
+    public Double getQuoteAssetVolume() {
+        return quoteAssetVolume;
+    }
+
+    public Double getTakerBuyBaseVolume() {
+        return takerBuyBaseVolume;
+    }
+
+    public Double getTakerBuyQuoteVolume() {
+        return takerBuyQuoteVolume;
+    }
 }

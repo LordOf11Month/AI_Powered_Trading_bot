@@ -8,7 +8,8 @@ import Modules.Kline;
 import Interfaces.Strategy;
 import Modules.TradeIntent;
 import Http_Client.DummyExchanger;
-
+import Modules.Signal;
+import java.util.List;
 public class Bot implements Observer {
     
     private PositionSizer positionSizer;
@@ -16,6 +17,7 @@ public class Bot implements Observer {
     private Subject subject;
     private RiskManager riskManager;
     private DummyExchanger exchanger;
+
 
     public Bot(PositionSizer positionSizer, Strategy strategy, Subject subject, RiskManager riskManager, DummyExchanger exchanger) {
         this.positionSizer = positionSizer;
@@ -27,7 +29,7 @@ public class Bot implements Observer {
     @Override
     public void update() {
        
-        double signal = strategy.makeDecision((Kline)subject.pullData());
+        Signal signal = strategy.makeDecision((List<Kline>)subject.pullData());
        
         TradeIntent tradeIntent = riskManager.filter(positionSizer.sizePosition(signal));
 

@@ -2,8 +2,10 @@ package Modules;
 
 import java.util.HashMap;
 import java.util.Map;
-public abstract class Order {
+public  class Order {
     protected final HashMap<String, String> parameters;
+
+
     protected Order(String symbol, Side side, OrderType type) {
         this.parameters = new HashMap<>();
         this.parameters.put("symbol", symbol);

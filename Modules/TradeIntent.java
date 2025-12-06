@@ -2,15 +2,16 @@ package Modules;
 
 public class TradeIntent {
 
-    final String symbol;
-    final Order.Side side;
-    final double quantity;
-    final boolean isQuoteOrder; // true if the order is a quote order, false if it is a base order
-    final boolean isAggressive; // true if the order is aggressive, false if it is passive
+    String symbol;
+    Order.Side side;
+    double quantity;
+    boolean isQuoteOrder; // true if the order is a quote order, false if it is a base order
+    boolean isAggressive; // true if the order is aggressive, false if it is passive
 
-    final Double limitPrice;   // optional
-    final Double stopLoss;     // optional
-    final Double takeProfit;   // optional
+    Double limitPrice;   // optional
+    Double stopLoss;     // optional
+    Double takeProfit;   // optional
+    boolean veto; //raised by risk manager and cancels order.
 
     public TradeIntent(
             String symbol,
@@ -20,7 +21,8 @@ public class TradeIntent {
             boolean isAggressive,
             Double limitPrice,
             Double stopLoss,
-            Double takeProfit
+            Double takeProfit,
+            boolean veto
     ) {
         this.symbol = symbol;
         this.side = side;
@@ -30,6 +32,7 @@ public class TradeIntent {
         this.limitPrice = limitPrice;
         this.stopLoss = stopLoss;
         this.takeProfit = takeProfit;
+        this.veto=veto;
     }
 
     // getters...
